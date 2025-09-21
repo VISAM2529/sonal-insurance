@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { LayoutDashboard, Shield, CreditCard, BarChart3, Users, Settings, Plus, Edit, Trash2, Eye, Folder, FolderOpen, ChevronRight, ChevronDown, Bell, Search, User, LogOut, Home } from 'lucide-react';
+import { LayoutDashboard, Shield, CreditCard, BarChart3, Users, Settings, Plus, Edit, Trash2, Eye, Folder, FolderOpen, ChevronRight, ChevronDown, Bell, Search, User, LogOut, Home, Menu, X } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import ServicesList from '@/components/admin/ServicesList';
 import LoansList from '@/components/admin/LoansList';
@@ -17,6 +17,7 @@ export default function AdminDashboard() {
     totalApplications: 0,
     pendingApplications: 0
   });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchOverviewStats();
@@ -24,7 +25,6 @@ export default function AdminDashboard() {
 
   const fetchOverviewStats = async () => {
     try {
-      // Fetch summary statistics
       const [servicesRes, loansRes, applicationsRes] = await Promise.all([
         fetch('/api/admin/services'),
         fetch('/api/admin/loan-products'),
@@ -85,13 +85,13 @@ export default function AdminDashboard() {
         { id: 'loan-categories', label: 'Categories', icon: FolderOpen }
       ]
     },
-    { 
-      id: 'applications', 
-      label: 'Applications', 
-      icon: Users,
-      badge: stats.pendingApplications > 0 ? stats.pendingApplications : null
-    },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+    // { 
+    //   id: 'applications', 
+    //   label: 'Applications', 
+    //   icon: Users,
+    //   badge: stats.pendingApplications > 0 ? stats.pendingApplications : null
+    // },
+    // { id: 'analytics', label: 'Analytics', icon: BarChart3 },
   ];
 
   const [expandedMenus, setExpandedMenus] = useState({
@@ -112,20 +112,26 @@ export default function AdminDashboard() {
       } else if (item.id.includes('loan')) {
         setExpandedMenus(prev => ({ ...prev, loans: true }));
       }
+      setIsSidebarOpen(false); // Close sidebar on mobile after selection
     }
   };
 
   const handleSubmenuClick = (itemId) => {
     setActiveTab(itemId);
+    setIsSidebarOpen(false); // Close sidebar on mobile after selection
   };
 
   return (
     <AdminLayout>
-      <div className="flex h-screen bg-gray-50">
-        {/* Professional Sidebar */}
-        <div className="w-64 bg-white shadow-lg border-r border-gray-200">
-          {/* Header */}
-          <div className="px-6 py-4 border-b border-gray-200">
+      <div className="flex min-h-screen bg-gray-50">
+        {/* Sidebar */}
+        <div className={`
+          fixed md:static inset-y-0 left-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 
+          transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+          md:translate-x-0 transition-transform duration-300 ease-in-out
+        `}>
+          {/* Sidebar Header */}
+          <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-8 h-8 bg-emerald-600 rounded flex items-center justify-center">
                 <Shield className="h-5 w-5 text-white" />
@@ -135,8 +141,14 @@ export default function AdminDashboard() {
                 <p className="text-xs text-gray-500">Insurance Platform</p>
               </div>
             </div>
+            <button
+              className="md:hidden text-gray-600 hover:text-gray-800"
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              <X className="h-6 w-6" />
+            </button>
           </div>
-          
+
           {/* Navigation */}
           <nav className="mt-6 px-3">
             {menuItems.map((item) => (
@@ -153,7 +165,6 @@ export default function AdminDashboard() {
                     <item.icon className="h-5 w-5 mr-3" />
                     <span className="text-sm font-medium">{item.label}</span>
                   </div>
-                  
                   <div className="flex items-center space-x-2">
                     {item.badge && (
                       <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
@@ -171,8 +182,6 @@ export default function AdminDashboard() {
                     )}
                   </div>
                 </button>
-                
-                {/* Submenu */}
                 {item.submenu && expandedMenus[item.id] && (
                   <div className="mt-1 ml-6 space-y-1">
                     {item.submenu.map((subItem) => (
@@ -204,12 +213,25 @@ export default function AdminDashboard() {
           </div>
         </div>
 
+        {/* Overlay for Mobile Sidebar */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          ></div>
+        )}
+
         {/* Main Content */}
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 flex flex-col overflow-auto">
           {/* Top Header */}
-          <div className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
-            <div className="flex items-center justify-between">
-              {/* Breadcrumb */}
+          <div className="bg-white shadow-sm border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <button
+                className="md:hidden text-gray-600 hover:text-gray-800"
+                onClick={() => setIsSidebarOpen(true)}
+              >
+                <Menu className="h-6 w-6" />
+              </button>
               <div className="flex items-center space-x-2 text-sm">
                 <span className="text-gray-500">Admin</span>
                 <ChevronRight className="h-4 w-4 text-gray-400" />
@@ -236,30 +258,25 @@ export default function AdminDashboard() {
                   })()}
                 </span>
               </div>
-
-              {/* Header Actions */}
-              <div className="flex items-center space-x-4">
-                {/* Notifications */}
-                <button className="relative p-2 text-gray-400 hover:text-gray-600">
-                  <Bell className="h-5 w-5" />
-                  {stats.pendingApplications > 0 && (
-                    <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
-                  )}
-                </button>
-
-                {/* User Menu */}
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <User className="h-4 w-4 text-gray-600" />
-                  </div>
-                  <span className="text-sm font-medium text-gray-700">Admin</span>
+            </div>
+            <div className="flex items-center space-x-4">
+              <button className="relative p-2 text-gray-400 hover:text-gray-600">
+                <Bell className="h-5 w-5" />
+                {stats.pendingApplications > 0 && (
+                  <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+                )}
+              </button>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-gray-600" />
                 </div>
+                <span className="text-sm font-medium text-gray-700 hidden sm:inline">Admin</span>
               </div>
             </div>
           </div>
 
           {/* Content Area */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {renderContent()}
           </div>
         </div>

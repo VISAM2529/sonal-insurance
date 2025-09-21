@@ -4,43 +4,31 @@ import { Plus, Edit, Trash2, DollarSign, Star } from 'lucide-react';
 import LoanForm from './LoanForm';
 
 const SkeletonLoader = () => (
-  <div className="p-6 max-w-7xl mx-auto">
-    <div className="flex justify-between items-center mb-10">
-      <div>
-        <div className="h-8 w-48 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-4 w-64 bg-gray-200 rounded mt-2 animate-pulse"></div>
+  <div className="p-4 sm:p-6 max-w-7xl mx-auto">
+    <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-10">
+      <div className="w-full sm:w-auto">
+        <div className="h-8 w-48 bg-gray-200 rounded animate-pulse mb-2"></div>
+        <div className="h-4 w-64 bg-gray-200 rounded animate-pulse"></div>
       </div>
-      <div className="h-10 w-48 bg-gray-200 rounded-lg animate-pulse"></div>
+      <div className="h-10 w-full sm:w-48 bg-gray-200 rounded-lg animate-pulse mt-4 sm:mt-0"></div>
     </div>
     <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-      <div className="overflow-x-auto">
+      {/* Desktop Table Skeleton */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
-              <th className="px-6 py-4">
-                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </th>
+              {['Product', 'Category', 'Interest Rate', 'Max Amount', 'Status', 'Actions'].map((header, index) => (
+                <th key={index} className="px-4 sm:px-6 py-4">
+                  <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {Array.from({ length: 5 }).map((_, index) => (
               <tr key={index} className="animate-pulse">
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="flex items-center">
                     <div>
                       <div className="h-5 w-32 bg-gray-200 rounded mb-1"></div>
@@ -48,21 +36,21 @@ const SkeletonLoader = () => (
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="h-5 w-24 bg-gray-200 rounded"></div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="h-5 w-20 bg-gray-200 rounded mb-1"></div>
                   <div className="h-4 w-28 bg-gray-200 rounded"></div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="h-5 w-20 bg-gray-200 rounded mb-1"></div>
                   <div className="h-4 w-28 bg-gray-200 rounded"></div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="h-5 w-16 bg-gray-200 rounded"></div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-4">
                   <div className="flex space-x-3">
                     <div className="h-6 w-6 bg-gray-200 rounded"></div>
                     <div className="h-6 w-6 bg-gray-200 rounded"></div>
@@ -72,6 +60,25 @@ const SkeletonLoader = () => (
             ))}
           </tbody>
         </table>
+      </div>
+      {/* Mobile Card Skeleton */}
+      <div className="block sm:hidden space-y-4 p-4">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div key={index} className="bg-gray-50 rounded-lg p-4 border border-gray-200 animate-pulse">
+            <div className="flex items-center justify-between mb-2">
+              <div className="h-5 w-3/4 bg-gray-200 rounded"></div>
+              <div className="h-5 w-16 bg-gray-200 rounded"></div>
+            </div>
+            <div className="h-4 w-full bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 w-1/2 bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 w-1/3 bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 w-1/3 bg-gray-200 rounded mb-2"></div>
+            <div className="flex space-x-3">
+              <div className="h-8 w-8 bg-gray-200 rounded"></div>
+              <div className="h-8 w-8 bg-gray-200 rounded"></div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -131,15 +138,15 @@ export default function LoansList() {
   if (loading) return <SkeletonLoader />;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center mb-10">
-        <div>
-          <h1 className="text-3xl font-semibold text-gray-900 tracking-tight">Loan Products</h1>
+    <div className="p-4 sm:p-6 max-w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-10">
+        <div className="w-full sm:w-auto text-center sm:text-left">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight">Loan Products</h1>
           <p className="mt-1 text-sm text-gray-500">Manage your loan offerings and rates</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="group relative inline-flex items-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md"
+          className="group relative inline-flex items-center px-4 sm:px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md mt-4 sm:mt-0 w-full sm:w-auto"
         >
           <Plus className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
           Add New Loan Product
@@ -147,26 +154,27 @@ export default function LoansList() {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop Table View */}
+        <div className="hidden sm:block overflow-x-auto">
           <table className="w-full min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Product
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Interest Rate
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Max Amount
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -174,7 +182,7 @@ export default function LoansList() {
             <tbody className="divide-y divide-gray-100">
               {loans.map((loan) => (
                 <tr key={loan._id} className="hover:bg-gray-50 transition-colors duration-150">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div>
                         <div className="text-sm font-medium text-gray-900">{loan.title || 'Untitled'}</div>
@@ -182,24 +190,24 @@ export default function LoansList() {
                           {loan.description?.substring(0, 50) || 'No description'}...
                         </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                      </div>
+                    </td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <span className="inline-flex px-2.5 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
                       {loan.categoryId?.name || 'N/A'}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{loan.interestRate?.display || 'N/A'}</div>
                     <div className="text-xs text-gray-500">
                       {loan.interestRate?.min}% - {loan.interestRate?.max}%
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{loan.loanAmount?.display || 'N/A'}</div>
                     <div className="text-xs text-gray-500">Max Tenure: {loan.tenure?.display || 'N/A'}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <span className={`inline-flex px-2.5 py-1 text-xs font-medium rounded-full ${
                         loan.isActive 
@@ -213,11 +221,11 @@ export default function LoansList() {
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex space-x-3">
                       <button
                         onClick={() => handleEdit(loan)}
-                        className="text-blue-600 hover:text-blue-800 p-1.5 rounded hover:bg-blue-50 transition-colors duration-150"
+                        className="text-blue-600 hover:text-blue-800 p-2 rounded hover:bg-blue-50 transition-colors duration-150"
                         title="Edit loan"
                         aria-label="Edit loan"
                       >
@@ -225,7 +233,7 @@ export default function LoansList() {
                       </button>
                       <button
                         onClick={() => handleDelete(loan._id)}
-                        className="text-red-600 hover:text-red-900 p-1.5 rounded hover:bg-red-50 transition-colors duration-150"
+                        className="text-red-600 hover:text-red-900 p-2 rounded hover:bg-red-50 transition-colors duration-150"
                         title="Delete loan"
                         aria-label="Delete loan"
                       >
@@ -239,15 +247,62 @@ export default function LoansList() {
           </table>
         </div>
 
+        {/* Mobile Card View */}
+        <div className="block sm:hidden space-y-4 p-4">
+          {loans.map((loan) => (
+            <div key={loan._id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="text-sm font-medium text-gray-900">{loan.title || 'Untitled'}</div>
+                <span className={`inline-flex px-2.5 py-1 text-xs font-medium rounded-full ${
+                  loan.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                }`}>
+                  {loan.isActive ? 'Active' : 'Inactive'}
+                </span>
+              </div>
+              <div className="text-xs text-gray-500 mb-2 truncate">{loan.description?.substring(0, 50) || 'No description'}...</div>
+              <div className="text-xs text-gray-500 mb-2">
+                <span className="inline-flex px-2.5 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                  {loan.categoryId?.name || 'N/A'}
+                </span>
+              </div>
+              <div className="text-xs text-gray-500 mb-2">Interest Rate: {loan.interestRate?.display || 'N/A'} ({loan.interestRate?.min}% - {loan.interestRate?.max}%)</div>
+              <div className="text-xs text-gray-500 mb-2">Max Amount: {loan.loanAmount?.display || 'N/A'}</div>
+              <div className="text-xs text-gray-500 mb-2">Max Tenure: {loan.tenure?.display || 'N/A'}</div>
+              {loan.isFeatured && (
+                <div className="flex items-center mb-2">
+                  <Star className="h-4 w-4 text-yellow-400 fill-current mr-1.5" />
+                  <span className="text-xs text-gray-500">Featured</span>
+                </div>
+              )}
+              <div className="flex space-x-3">
+                <button
+                  onClick={() => handleEdit(loan)}
+                  className="text-blue-600 hover:text-blue-800 p-2 rounded hover:bg-blue-50 transition-colors duration-150"
+                  aria-label="Edit loan"
+                >
+                  <Edit className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => handleDelete(loan._id)}
+                  className="text-red-600 hover:text-red-900 p-2 rounded hover:bg-red-50 transition-colors duration-150"
+                  aria-label="Delete loan"
+                >
+                  <Trash2 className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {loans.length === 0 && !loading && (
           <div className="text-center py-12">
-            <DollarSign className="mx-auto h-12 w-12 text-gray-400" />
+            <DollarSign className="mx-auto h-10 sm:h-12 w-10 sm:w-12 text-gray-400" />
             <h3 className="mt-2 text-lg font-medium text-gray-900">No Loan Products</h3>
             <p className="mt-1 text-sm text-gray-500">Get started by creating a new loan product.</p>
             <div className="mt-6">
               <button
                 onClick={() => setShowForm(true)}
-                className="group inline-flex items-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition-all duration-200 shadow-sm hover:shadow-md"
+                className="group inline-flex items-center px-4 sm:px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto"
               >
                 <Plus className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
                 Add Loan Product

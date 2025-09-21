@@ -52,10 +52,10 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Home</a>
+              {/* <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Home</a>
               <a href="#insurance" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Insurance</a>
               <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">About</a>
-              <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Contact</a>
+              <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Contact</a> */}
               <button className="w-full mt-4 bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold">
                 Get Quote
               </button>
