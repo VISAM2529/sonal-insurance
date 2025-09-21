@@ -30,31 +30,7 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">
-              Home
-            </a>
-            <div className="relative group">
-              <button className="flex items-center text-gray-700 hover:text-emerald-600 transition-colors font-medium">
-                Insurance <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="py-2">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Health Insurance</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Auto Insurance</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Home Insurance</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Business Insurance</a>
-                </div>
-              </div>
-            </div>
-            <a href="#about" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">
-              About
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">
-              Contact
-            </a>
-          </nav>
+        
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center">

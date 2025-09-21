@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import Loans from "../components/Loans";
 export default function Home() {
   return (
    <>
@@ -37,8 +38,9 @@ export default function Home() {
         <Header />
         <main>
           <HeroSection />
-          <StatsSection />
+          {/* <StatsSection /> */}
           <ServicesSection />
+          <Loans/>
           <WhyChooseUs />
           <TestimonialsSection />
           <FAQSection />

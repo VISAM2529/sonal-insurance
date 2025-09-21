@@ -1,0 +1,117 @@
+|-- .env
+|-- .gitignore
+|-- eslint.config.mjs
+|-- jsconfig.json
+|-- next.config.mjs
+|-- package-lock.json
+|-- package.json
+|-- postcss.config.mjs
+|-- public
+    |-- assets
+        |-- hero-section
+            |-- couple-goals.png
+            |-- couple.png
+            |-- happy-customers.png
+            |-- happy-family.png
+            |-- mother.png
+            |-- professional.png
+            |-- senior.png
+        |-- insurance
+            |-- car.png
+            |-- home.png
+            |-- life.png
+            |-- medical.png
+            |-- travel.png
+    |-- file.svg
+    |-- globe.svg
+    |-- next.svg
+    |-- vercel.svg
+    |-- window.svg
+|-- README.md
+|-- src
+    |-- app
+        |-- admin
+            |-- page.jsx
+        |-- api
+            |-- admin
+                |-- loan-applications
+                    |-- route.js
+                |-- loan-categories
+                    |-- route.js
+                    |-- [id]
+                        |-- route.js
+                |-- loan-products
+                    |-- route.js
+                    |-- [id]
+                        |-- route.js
+                |-- loan-stats
+                    |-- route.js
+                |-- service-categories
+                    |-- route.js
+                    |-- [id]
+                        |-- route.js
+                |-- service-plans
+                    |-- route.js
+                |-- services
+                    |-- route.js
+                    |-- [id]
+                        |-- route.js
+            |-- public
+                |-- loan-applications
+                    |-- route.js
+                |-- loan-calculator
+                    |-- route.js
+                |-- loan-products
+                    |-- route.js
+                |-- service-categories
+                    |-- route.js
+                |-- services
+                    |-- [slug]
+                        |-- route.js
+            |-- upload
+                |-- route.js
+        |-- favicon.ico
+        |-- globals.css
+        |-- layout.js
+        |-- loan
+            |-- [id]
+                |-- page.jsx
+        |-- page.js
+        |-- services
+            |-- [id]
+                |-- page.jsx
+    |-- components
+        |-- admin
+            |-- AdminLayout.jsx
+            |-- ApplicationDetail.jsx
+            |-- ApplicationsList.jsx
+            |-- LoanCategoriesList.jsx
+            |-- LoanCategoryForm.jsx
+            |-- LoanForm.jsx
+            |-- LoansList.jsx
+            |-- ServiceCategoriesList.jsx
+            |-- ServiceCategoryForm.jsx
+            |-- ServiceForm.jsx
+            |-- ServicesList.jsx
+            |-- StatsOverview.jsx
+        |-- CTASection.jsx
+        |-- FAQSection.jsx
+        |-- Footer.jsx
+        |-- Header.jsx
+        |-- HeroSection.jsx
+        |-- Loans.jsx
+        |-- ServicesSection.jsx
+        |-- StatsSection.jsx
+        |-- TestimonialsSection.jsx
+        |-- WhyChooseUs.jsx
+    |-- lib
+        |-- db.js
+    |-- models
+        |-- LoanApplication.js
+        |-- LoanCategory.js
+        |-- LoanProduct.js
+        |-- LoanStats.js
+        |-- Service.js
+        |-- ServiceCategory.js
+        |-- ServicePlan.js
+|-- tailwind.config.js
