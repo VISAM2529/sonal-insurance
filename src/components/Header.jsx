@@ -33,11 +33,17 @@ const Header = () => {
         
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center">
-            <button className="bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-700 transition-all duration-200 hover:shadow-lg hover:scale-105">
-              Get Quote
-            </button>
-          </div>
+         <div className=" ">
+  <div className="px-2 pt-2 pb-3 space-y-1">
+    <a
+      href="mailto:sonalinsurance02@gmail.com?subject=Get%20Quote%20Request&body=Hello%20Sonal%20Insurance%2C%0AI%20would%20like%20to%20get%20a%20quote%20for%20an%20insurance%20plan."
+      className="block w-full mt-4 bg-emerald-600 text-white text-center px-6 py-2.5 rounded-full font-semibold"
+    >
+      Get Quote
+    </a>
+  </div>
+
+</div>
 
           {/* Mobile menu button */}
           <button 
@@ -50,17 +56,18 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {/* <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Home</a>
-              <a href="#insurance" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Insurance</a>
-              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">About</a>
-              <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Contact</a> */}
-              <button className="w-full mt-4 bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold">
-                Get Quote
-              </button>
-            </div>
-          </div>
+ <div className="lg:hidden bg-white border-t">
+  <div className="px-2 pt-2 pb-3 space-y-1">
+    <a
+      href="mailto:sonalinsurance02@gmail.com?subject=Get%20Quote%20Request&body=Hello%20Sonal%20Insurance%2C%0AI%20would%20like%20to%20get%20a%20quote%20for%20an%20insurance%20plan."
+      className="block w-full mt-4 bg-emerald-600 text-white text-center px-6 py-2.5 rounded-full font-semibold"
+    >
+      Get Quote
+    </a>
+  </div>
+
+</div>
+
         )}
       </div>
     </header>

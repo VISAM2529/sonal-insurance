@@ -37,15 +37,13 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-6">
-              <button className="bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-emerald-700 transition-all duration-200 hover:shadow-lg">
-                Get Started
-              </button>
-              <button className="flex items-center text-gray-700 font-medium hover:text-emerald-600 transition-colors duration-200">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-3 hover:bg-emerald-100 transition-colors duration-200">
-                  <Play className="h-4 w-4 ml-0.5" />
-                </div>
-                Play Video
-              </button>
+              <a
+      href="mailto:sonalinsurance02@gmail.com?subject=Get%20Quote%20Request&body=Hello%20Sonal%20Insurance%2C%0AI%20would%20like%20to%20get%20a%20quote%20for%20an%20insurance%20plan."
+      className="block w-48 mt-4 bg-emerald-600 text-white text-center px-6 py-2.5 rounded-full font-semibold"
+    >
+      Get Started
+    </a>
+             
             </div>
           </div>
 

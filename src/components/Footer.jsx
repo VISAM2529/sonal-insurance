@@ -17,16 +17,8 @@ const Footer = () => {
               Trusted by over 500,000 families across India.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200">
+            
+              <a href="https://www.instagram.com/sonalinsurance/" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition-colors duration-200">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -53,6 +45,9 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Motor Insurance</a></li>
               <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Home Insurance</a></li>
               <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Travel Insurance</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Property Insurance</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Fire Insurance</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-emerald-400 transition-colors duration-200">Factory Insurance</a></li>
             </ul>
           </div>
 
@@ -64,22 +59,20 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 text-emerald-400 mr-3 mt-0.5 flex-shrink-0" />
                 <div className="text-gray-300">
                   <p>Sonal Insurance Ltd.</p>
-                  <p>Mumbai, Maharashtra 400001</p>
+                  <p>Audumbar Nivya,Narhe,Pune</p>
                   <p>India</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-emerald-400 mr-3 flex-shrink-0" />
                 <div className="text-gray-300">
-                  <p>1800-123-4567 (Toll Free)</p>
-                  <p>+91 22 1234 5678</p>
+                  <p>+91 96232 55826</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-emerald-400 mr-3 flex-shrink-0" />
                 <div className="text-gray-300">
-                  <p>info@sonalinsurance.com</p>
-                  <p>support@sonalinsurance.com</p>
+                  <p>sonalinsurance02@gmail.com</p>
                 </div>
               </div>
             </div>
