@@ -20,13 +20,13 @@ const CTASection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button className="bg-white text-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-200 hover:scale-105 flex items-center">
+          <a  href="mailto:sonalinsurance02@gmail.com?subject=Get%20Quote%20Request&body=Hello%20Sonal%20Insurance%2C%0AI%20would%20like%20to%20get%20a%20quote%20for%20an%20insurance%20plan." className="bg-white text-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-200 hover:scale-105 flex items-center cursor-pointer">
             Get Free Quote
             <ArrowRight className="ml-2 h-5 w-5" />
-          </button>
+          </a>
           <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-emerald-600 transition-all duration-200 flex items-center">
             <Phone className="mr-2 h-5 w-5" />
-            Call: 1800-123-4567
+            Call: +91 96232 55826
           </button>
         </div>
 
